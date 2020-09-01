@@ -2,9 +2,6 @@
 
 #include <Adafruit_NeoPixel.h>  //新增RGB程式庫
 
-uint8_t EEPROMdata;    //宣告328IC內部EEPROM
-unsigned char E2PROM[5]={0,0,0,0,0}; //宣告存放資料於EEPROM的陣列
-
 
 //紅(255,0,0)綠(0,255,0)藍(0,0,255)黃(255,255,0)紫(255,0,255)青(0,255,255)白(255,255,255)橙(255,128,0)
 
@@ -23,14 +20,6 @@ void setup()
   pinMode(rgbpin,OUTPUT);
   myrgb.clear();
   myrgb.show();  // clear，每個點的顏色清為0， show,顯示 2行組合成初始RGB不亮
-
-  if(eeprom_read_byte (( uint8_t *) 0x05)==1){  //讀取0~4筆 eeprom 裡的資料
-    for(int i=0;i<5;i++)E2PROM[i]=eeprom_read_byte (( uint8_t *) 0x00+i); //0~4筆
-  }
-  else{
-    for(int i=0;i<5;i++)eeprom_update_byte (( uint8_t *) 0x00+i,E2PROM[i]); //更新0~4筆 eeprom 裡的資料
-    eeprom_update_byte (( uint8_t *) 0x05,1); //0~4筆
-  }
   
   noInterrupts(); //暫停所有中斷
   TCCR1A=0;
@@ -71,5 +60,17 @@ void rgbdata(byte r,byte g,byte b,byte count ) //r,g,b分別為輸入紅綠藍3�
   myrgb.setPixelColor(count-1,myrgb.Color(r,g,b)); 
   myrgb.show();
 }
-//
+
+測試程式:
+void loop() 
+{
+  //--------------執行前,8個RGB燈條,由下往上紅色漸亮,全滅後,由下往上綠色漸亮,全滅......---
+       colorWipe(myrgb.Color(255,0,0),1000); //RED紅
+       myrgb.clear();
+       colorWipe(myrgb.Color(0,255,0),1000); //Green綠
+       myrgb.clear();
+       colorWipe(myrgb.Color(0,0,255),1000); //Blue藍
+       myrgb.clear();
+       sw_status=20;
+}
   
