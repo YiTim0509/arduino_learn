@@ -55,8 +55,8 @@ ISR(TIMER1_OVF_vect) //328IC內部timer1 溢位中斷
     }
   }
 }
-//------------WS2812 全彩LED的副程式,RGB燈條,分別以紅綠藍由下往上漸亮--------
-void colorWipe(uint32_t c,uint8_t wait) 
+//------------WS2812 全彩RGB的副程式,RGB燈條,分別以紅綠藍由下往上漸亮--------
+void colorWipe(uint32_t c,uint8_t wait)  //c要輸入RGB顏色 , wait則輸入delay時間(ms)
 {
   for(uint16_t i=0; i<myrgb.numPixels();i++)  //一個顏色使RGB漸亮,myrgb.numPixels()可改自己需要的數量 控制要亮幾顆
   {
@@ -65,11 +65,11 @@ void colorWipe(uint32_t c,uint8_t wait)
     delay(wait);
   }
 }
-//--------------分別顯示8個不同顏色LED_副程式----------------------
-void rgbdata(byte r,byte g,byte b,byte count )
+//--------------分別顯示不同顏色RGB_副程式----------------------
+void rgbdata(byte r,byte g,byte b,byte count ) //r,g,b分別為輸入紅綠藍3色,配合上方RGB陣列使用 ,count為控制RGB亮哪顆
 {
-  myrgb.setPixelColor(count-1,myrgb.Color(r,g,b));
+  myrgb.setPixelColor(count-1,myrgb.Color(r,g,b)); 
   myrgb.show();
 }
-
+//
   
