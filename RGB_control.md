@@ -17,6 +17,8 @@ Adafruit_NeoPixel myrgb = Adafruit_NeoPixel (led_count, rgbpin, NEO_GRB + NEO_KH
 
 void setup() 
 {
+  int vrvalue=0,vrcount=0; //供可變電阻使用
+  
   pinMode(rgbpin,OUTPUT);
   myrgb.clear();
   myrgb.show();  // clear，每個點的顏色清為0， show,顯示 2行組合成初始RGB不亮
@@ -64,13 +66,37 @@ void rgbdata(byte r,byte g,byte b,byte count ) //r,g,b分別為輸入紅綠藍3�
 測試程式:
 void loop() 
 {
-  //--------------執行前,8個RGB燈條,由下往上紅色漸亮,全滅後,由下往上綠色漸亮,全滅......---
+  //第一個範例
+  //8個RGB燈條,由下往上紅色漸亮,全滅後,由下往上綠色漸亮,全滅.....
        colorWipe(myrgb.Color(255,0,0),1000); //RED紅
        myrgb.clear();
        colorWipe(myrgb.Color(0,255,0),1000); //Green綠
        myrgb.clear();
        colorWipe(myrgb.Color(0,0,255),1000); //Blue藍
        myrgb.clear();
-       sw_status=20;
+  //上面程式為RGB分別由第1顆漸亮至第8顆 顏色順序為紅綠藍 
+  //當其中一個顏色跑完的時候,即清空RGB,讓他不亮
+  
+  
+  //第二個範例
+  
+  for(int i=0;i<8;i++)rgbdata(Red[i],Green[i],Blue[i],i+1);
+  
+  //上面程式為 一次點亮8顆RGB LED 顏色由下到上順序為 紅綠藍黃紫青白橙
+  //可在for迴圈當中加入delay(ms),可讓一顆一顆慢慢顯示
+  
+  //第三個範例
+  //RGB加上可變電阻的應用,調可變電阻可讓RGB進行呼吸燈效果
+    vrvalue=analogRead(A5); //讀取腳位A5的可變電阻值(0~1023)
+    vrvalue=map(vrvalue,0,1023,0,255); //將0~1023轉成0~255
+    rgbdata(vrvalue,0,0,1); //分別點亮8顆RGB 顏色為紅綠藍黃紫青白橙
+    rgbdata(0,vrvalue,0,2);
+    rgbdata(0,0,vrvalue,3);
+    rgbdata(vrvalue,vrvalue,0,4);
+    rgbdata(vrvalue,0,vrvalue,5);
+    rgbdata(0,vrvalue,vrvalue,6);
+    rgbdata(vrvalue,vrvalue,vrvalue,7);
+    rgbdata(vrvalue,vrvalue/2,0,8);
+    
 }
   
