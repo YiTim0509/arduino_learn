@@ -87,8 +87,8 @@ void loop()
   
   //第三個範例
   //RGB加上可變電阻的應用,調可變電阻可讓RGB進行呼吸燈效果
-    vrvalue=analogRead(A5); //讀取腳位A5的可變電阻值(0~1023)
-    vrvalue=map(vrvalue,0,1023,0,255); //將0~1023轉成0~255
+    vrvalue=analogRead(A5); //讀取腳位A5的可變電阻值(0 ~ 1023)
+    vrvalue=map(vrvalue,0,1023,0,255); //將0 ~ 1023轉成0~255
     rgbdata(vrvalue,0,0,1); //分別點亮8顆RGB 顏色為紅綠藍黃紫青白橙
     rgbdata(0,vrvalue,0,2);
     rgbdata(0,0,vrvalue,3);
