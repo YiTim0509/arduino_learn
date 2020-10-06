@@ -32,39 +32,6 @@ clear，每個點的顏色清為0， show,顯示 2行組合成初始RGB不亮
 myrgb.clear();
 myrgb.show();
 ```
-暫停所有中斷
-```c++
-noInterrupts(); 
-```
-啟動所有中斷
-```c++
-interrupts(); 
-```
-宣告10個中斷功能
-```c++
-int timer[10];
-```
-
-10個中斷(timer)預設為0ms
-```c++
-for(byte i=0;i<10;i++) timer[i]=0;
-```
-328IC內部timer1 溢位中斷<br>
-65536-(16M/256/1000Hz(1ms))
-```c++
-ISR(TIMER1_OVF_vect) 
-{
-  byte i;
-  TCNT1=65473;
-  for(i=0;i<10;i++)
-  {
-    if(timer[i]>0)
-    {
-      timer[i]--;
-    }
-  }
-}
-```
 
 WS2812 全彩RGB的副程式,RGB燈條,分別以紅綠藍由下往上漸亮<br>
 c要輸入RGB顏色 , wait則輸入delay時間(ms)<br>
@@ -158,7 +125,6 @@ rgbdata(vrvalue,vrvalue/2,0,8);
 #include <Adafruit_NeoPixel.h>
 byte rgbpin=3,led_count=8; 
 int vrvalue=0,vrcount=0;
-int timer[10];
 byte Red[8]={ 255, 0  ,0,   255,255  ,0  ,255,255}; 
 byte Green[8]={0,  255,0   ,255 ,0,  255 ,255,128};
 byte Blue[8]={ 0,  0,  255 ,0   ,255,255 ,255,0};
@@ -167,34 +133,10 @@ Adafruit_NeoPixel myrgb = Adafruit_NeoPixel (led_count, rgbpin, NEO_GRB + NEO_KH
 
 void setup() 
 {
-  int vrvalue=0,vrcount=0; 
   
   pinMode(rgbpin,OUTPUT);
   myrgb.clear();
   myrgb.show();
-  
-  noInterrupts(); 
-  TCCR1A=0;
-  TCCR1B=0;
-  TCNT1=65473;
-  TCCR1B |= (1<<CS12);
-  TIMSK1 |= (1<<TOIE1);
-  interrupts(); 
-  
-  for(byte i=0;i<10;i++) timer[i]=0;
-}
-
-ISR(TIMER1_OVF_vect) 
-{
-  byte i;
-  TCNT1=65473; 
-  for(i=0;i<10;i++)
-  {
-    if(timer[i]>0)
-    {
-      timer[i]--;
-    }
-  }
 }
 
 void colorWipe(uint32_t c,uint8_t wait)
