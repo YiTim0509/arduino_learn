@@ -9,14 +9,14 @@ rgbpin=rgb腳位 led_count為數量
 ```c++
 byte rgbpin=3,led_count=8; 
 ```
-紅(255,0,0)綠(0,255,0)藍(0,0,255)黃(255,255,0)紫(255,0,255)青(0,255,255)白(255,255,255)橙(255,128,0)
+紅(255,0,0)綠(0,255,0)藍(0,0,255)黃(255,255,0)紫(255,0,255)青(0,255,255)白(255,255,255)橙(255,128,0)<br>
 宣告RGB陣列 配合上面顏色
 ```c++
 byte Red[8]={ 255, 0  ,0,   255,255  ,0  ,255,255}; 
 byte Green[8]={0,  255,0   ,255 ,0,  255 ,255,128};
 byte Blue[8]={ 0,  0,  255 ,0   ,255,255 ,255,0};
 ```
-定義新的物件名稱為myrgb
+定義新的物件名稱為myrgb<br>
 Adafruit_NeoPixel有三個參數,分別為LED的數量,硬體連接的腳位,以及LED採用RGB,800KHZ通訊訊號的速率
 ```c++
 Adafruit_NeoPixel myrgb = Adafruit_NeoPixel (led_count, rgbpin, NEO_GRB + NEO_KHZ800);
@@ -61,8 +61,8 @@ ISR(TIMER1_OVF_vect)
 }
 ```
 
-WS2812 全彩RGB的副程式,RGB燈條,分別以紅綠藍由下往上漸亮
-c要輸入RGB顏色 , wait則輸入delay時間(ms)
+WS2812 全彩RGB的副程式,RGB燈條,分別以紅綠藍由下往上漸亮<br>
+c要輸入RGB顏色 , wait則輸入delay時間(ms)<br>
 一個顏色使RGB漸亮,myrgb.numPixels()可改自己需要的數量 控制要亮幾顆
 ```c++
 void colorWipe(uint32_t c,uint8_t wait)
@@ -76,7 +76,7 @@ void colorWipe(uint32_t c,uint8_t wait)
 }
 ```
 
-分別顯示不同顏色RGB_副程式
+分別顯示不同顏色RGB_副程式<br>
 r,g,b分別為輸入紅綠藍3色,配合上方RGB陣列使用 ,count為控制RGB亮哪顆
 ```c++
 void rgbdata(byte r,byte g,byte b,byte count ) 
