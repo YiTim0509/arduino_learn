@@ -1,6 +1,7 @@
 # arduino_learn
 
-#include <Adafruit_NeoPixel.h>  //新增RGB程式庫<br>
+```c++
+#include <Adafruit_NeoPixel.h>  //新增RGB程式庫
 
 
 //紅(255,0,0)綠(0,255,0)藍(0,0,255)黃(255,255,0)紫(255,0,255)青(0,255,255)白(255,255,255)橙(255,128,0)
@@ -56,7 +57,7 @@ void colorWipe(uint32_t c,uint8_t wait)  //c要輸入RGB顏色 , wait則輸入de
     delay(wait);
   }
 }
-//--------------分別顯示不同顏色RGB_副程式----------------------
+//--------------分別顯示不同顏色RGB_副程式----------------------<br>
 void rgbdata(byte r,byte g,byte b,byte count ) //r,g,b分別為輸入紅綠藍3色,配合上方RGB陣列使用 ,count為控制RGB亮哪顆
 {
   myrgb.setPixelColor(count-1,myrgb.Color(r,g,b)); 
@@ -99,4 +100,4 @@ void loop()
     rgbdata(vrvalue,vrvalue/2,0,8);
     
 }
-  
+```
