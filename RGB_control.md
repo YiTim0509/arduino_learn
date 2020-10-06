@@ -113,7 +113,7 @@ rgbdata(vrvalue,vrvalue/2,0,8);
 
 
 # 測試程式:
-程式1:<br>
+## 程式1:
 8個RGB燈條,由下往上紅色漸亮,全滅後,由下往上綠色漸亮,全滅.....
 ```c++
 colorWipe(myrgb.Color(255,0,0),1000);
@@ -127,14 +127,14 @@ myrgb.clear();
 當其中一個顏色跑完的時候,即清空RGB,讓他不亮<br>
 
 
-程式2:<br>
+## 程式2:
 一次點亮8顆RGB LED 顏色由下到上順序為 紅綠藍黃紫青白橙<br>
 可在for迴圈當中加入delay(ms),可讓一顆一顆慢慢顯示
 ```c++
 for(int i=0;i<8;i++)rgbdata(Red[i],Green[i],Blue[i],i+1);
 ```
 
-程式3:<br>
+## 程式3:
 RGB加上可變電阻的應用,調可變電阻可讓RGB進行呼吸燈效果<br>
 ```c++
 vrvalue=analogRead(A5); 
@@ -152,8 +152,8 @@ rgbdata(vrvalue,vrvalue/2,0,8);
 
 
 # 全部程式統整
-注意:3個測試功能不能同時運作<br>
-可用旗標引導哪個功能運作
+## 注意:3個測試功能不能同時運作
+## 可用旗標引導哪個功能運作
 ```c++
 #include <Adafruit_NeoPixel.h>
 byte rgbpin=3,led_count=8; 
@@ -246,10 +246,10 @@ void loop()
 
 # 程式測試結果:
 
-程式1:<br>
+## 程式1:
 
 
-程式2:<br>
+## 程式2:
 ![image](https://github.com/YiTim0509/arduino_learn/blob/master/IMG_20201006_113210.jpg)
 
-程式3:<br>
+## 程式3:
