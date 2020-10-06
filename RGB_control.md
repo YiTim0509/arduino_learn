@@ -40,6 +40,10 @@ noInterrupts();
 ```c++
 interrupts(); 
 ```
+宣告10個中斷功能
+```c++
+int timer[10];
+```
 
 10個中斷(timer)預設為0ms
 ```c++
@@ -154,6 +158,7 @@ rgbdata(vrvalue,vrvalue/2,0,8);
 #include <Adafruit_NeoPixel.h>
 byte rgbpin=3,led_count=8; 
 int vrvalue=0,vrcount=0;
+int timer[10];
 byte Red[8]={ 255, 0  ,0,   255,255  ,0  ,255,255}; 
 byte Green[8]={0,  255,0   ,255 ,0,  255 ,255,128};
 byte Blue[8]={ 0,  0,  255 ,0   ,255,255 ,255,0};
