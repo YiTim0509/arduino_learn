@@ -247,9 +247,10 @@ void loop()
 # 程式測試結果:
 
 ## 程式1:
-
+![image](https://github.com/YiTim0509/arduino_learn/blob/master/20201006_115657.gif)
 
 ## 程式2:
 ![image](https://github.com/YiTim0509/arduino_learn/blob/master/IMG_20201006_113210.jpg)
 
 ## 程式3:
+![image](https://github.com/YiTim0509/arduino_learn/blob/master/20201006_115825.gif)
