@@ -1,6 +1,6 @@
 # arduino_learn
 
-#include <Adafruit_NeoPixel.h>  //新增RGB程式庫
+#include <Adafruit_NeoPixel.h>  //新增RGB程式庫<br>
 
 
 //紅(255,0,0)綠(0,255,0)藍(0,0,255)黃(255,255,0)紫(255,0,255)青(0,255,255)白(255,255,255)橙(255,128,0)
