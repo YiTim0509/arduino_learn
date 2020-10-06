@@ -242,3 +242,14 @@ void loop()
     
 }
 ```
+
+
+# 程式測試結果:
+
+程式1:<br>
+
+
+程式2:<br>
+![image](https://github.com/YiTim0509/arduino_learn/blob/master/IMG_20201006_113210.jpg)
+
+程式3:<br>
