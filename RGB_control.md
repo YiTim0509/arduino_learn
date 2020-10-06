@@ -146,6 +146,10 @@ rgbdata(vrvalue,vrvalue/2,0,8);
 ```
 
 
+
+# 全部程式統整
+注意:3個測試功能不能同時運作<br>
+可用旗標引導哪個功能運作
 ```c++
 #include <Adafruit_NeoPixel.h>
 byte rgbpin=3,led_count=8; 
